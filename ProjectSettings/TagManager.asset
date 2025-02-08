@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Muerte
   - Suelo
+  - Undefined
+  - Bullet
   layers:
   - Default
   - TransparentFX
