@@ -5,11 +5,11 @@ using Photon.Pun;
 
 public class Bullet : MonoBehaviourPun
 {
-    public float speed = 10f;
+    private float speed;
 
     private Photon.Realtime.Player owner;
 
-    public void OnServerInitialized(float bulletSpeed, Photon.Realtime.Player bulletOwner)
+    public void Initialize(float bulletSpeed, Photon.Realtime.Player bulletOwner)
     {
         speed = bulletSpeed;
         owner = bulletOwner;
@@ -18,20 +18,33 @@ public class Bullet : MonoBehaviourPun
     void Start()
     {
         if (photonView.IsMine) {
-            Destroy(gameObject, 2f);//destruye bala despues de 2 segundos
+            Invoke("DestroyBullet",1f);
         }
     }
 
 
     void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        if (photonView.IsMine)
+        {
+            transform.Translate(Vector3.forward * speed*Time.deltaTime);
+        }
     }
 
    void OnTriggerEnter(Collider other)
     {
-        if (photonView.IsMine && other.CompareTag("Player")) {
-            //aqui ayades logica de dayo al jugador
+        if (photonView.IsMine) {
+
+            if (!other.CompareTag("Player"))
+            {
+                DestroyBullet();
+            }
+        }
+    }
+    void DestroyBullet()
+    {
+        if (photonView.IsMine)
+        {
             PhotonNetwork.Destroy(gameObject);
         }
     }

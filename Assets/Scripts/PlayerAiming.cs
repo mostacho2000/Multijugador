@@ -12,6 +12,7 @@ public class PlayerAiming : MonoBehaviourPun
         {
             //Obtener la posicion del cursor en todo momento
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //lanzar un rayo desde la camara hacia la posicion del cursor
             if (Physics.Raycast(ray, out RaycastHit hit)) {
 
                 //calcular la direccion hacia el cursor
@@ -21,8 +22,9 @@ public class PlayerAiming : MonoBehaviourPun
 
                 //Rotar el jugadro hacia la direccion del jugador
                 if (direction!= Vector3.zero) {
-
+                    //calcular la rotacion objetivo usando la direccion
                     Quaternion targetRotation = Quaternion.LookRotation(direction);
+                    //Suavisar la rotacion del jugador hacia la direccion dle cursor
                     transform.rotation= Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
                 }
             }

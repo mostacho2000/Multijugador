@@ -14,9 +14,9 @@ public class PlayerShooting : MonoBehaviourPun
         if (photonView.IsMine)
         {
             //Disparar
-            if (Input.GetButtonDown("Fire1"))
+            if (photonView.IsMine && Input.GetButtonDown("Fire1"))
             {
-                photonView.RPC("shoot", RpcTarget.All);
+                shoot();
             }
         }
     }
@@ -24,7 +24,8 @@ public class PlayerShooting : MonoBehaviourPun
     void shoot()
     {
         //Instanciar el proyectil
-        GameObject bullet = PhotonNetwork.Instantiate("Bullet", firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Bullet>().photonView.TransferOwnership(photonView.Owner);
+        GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name,firePoint.position,firePoint.rotation);
+        bullet.GetComponent<Bullet>().Initialize(bulletSpeed,photonView.Owner);
+        //photonView.RPC("shoot", RpcTarget.All);
     }
 }
