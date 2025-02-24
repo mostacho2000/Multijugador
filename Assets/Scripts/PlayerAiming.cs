@@ -1,31 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
 public class PlayerAiming : MonoBehaviourPun
 {
-
     void Update()
     {
+        // Verifica si el jugador local es el dueño del PhotonView
         if (photonView.IsMine)
         {
-            //Obtener la posicion del cursor en todo momento
+            // Obtener la posición del cursor en el mundo
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //lanzar un rayo desde la camara hacia la posicion del cursor
-            if (Physics.Raycast(ray, out RaycastHit hit)) {
 
-                //calcular la direccion hacia el cursor
+            // Lanzar un rayo desde la cámara hacia la posición del cursor
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                // Calcular la dirección desde el jugador hacia el punto de impacto del rayo
                 Vector3 direction = hit.point - transform.position;
-                direction.y = 0;//ignorar el componente Y
 
+                // Ignorar la componente Y para evitar rotaciones no deseadas en el eje vertical
+                direction.y = 0;
 
-                //Rotar el jugadro hacia la direccion del jugador
-                if (direction!= Vector3.zero) {
-                    //calcular la rotacion objetivo usando la direccion
+                // Rotar el jugador hacia la dirección del cursor
+                if (direction != Vector3.zero)
+                {
+                    // Calcular la rotación objetivo usando la dirección
                     Quaternion targetRotation = Quaternion.LookRotation(direction);
-                    //Suavisar la rotacion del jugador hacia la direccion dle cursor
-                    transform.rotation= Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+
+                    // Suavizar la rotación del jugador hacia la dirección del cursor
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
                 }
             }
         }

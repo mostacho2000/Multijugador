@@ -1,35 +1,75 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviourPun
 {
-    public float speed = 10f;
+    [Header("Movement Settings")]
+    public float speed = 5f;
+    public float groundCheckDistance = 0.4f;
+    public LayerMask groundLayer;
+    public float maxVerticalSpeed = 10f; // Límite de velocidad vertical
+    public float fallMultiplier = 2.5f;  // Multiplicador de caída
 
-    //accedo al Rigidbody
+    [Header("Movement Smoothing")]
+    public float movementSmoothing = 0.05f;
+
     private Rigidbody rb;
+    private Vector3 currentVelocity;
+    private bool isGrounded;
 
-    private void Start()
+    void Start()
     {
-        //obtiene el componente Rigidbody
         rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.useGravity = true;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        //verifica si el juagdor es el dueyo del Photonview
-        if (photonView.IsMine) {
-            //Movimiento
-            float moveX = Input.GetAxis("Horizontal");
-            float moveZ = Input.GetAxis("Vertical");
+        if (!photonView.IsMine) return;
 
-            //Aplicar el movimiento al RB
-            Vector3 movement = new Vector3(moveX, 0, moveZ) * speed;
-            rb.velocity = movement;
-           
-        }
+        CheckGrounded();
+        HandleMovement();
+        LimitVerticalSpeed();
     }
 
-    
+    void CheckGrounded()
+    {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
+    }
+
+    void HandleMovement()
+    {
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
+
+        Vector3 targetVelocity = new Vector3(moveX, 0, moveZ).normalized * speed;
+        targetVelocity.y = rb.velocity.y;
+
+        if (!isGrounded)
+        {
+            // Aplicar mayor gravedad al caer
+            rb.AddForce(Vector3.down * fallMultiplier, ForceMode.Acceleration);
+        }
+
+        rb.velocity = Vector3.SmoothDamp(
+            rb.velocity,
+            targetVelocity,
+            ref currentVelocity,
+            isGrounded ? movementSmoothing : movementSmoothing * 2
+        );
+    }
+
+    void LimitVerticalSpeed()
+    {
+        Vector3 velocity = rb.velocity;
+        velocity.y = Mathf.Clamp(velocity.y, -maxVerticalSpeed, maxVerticalSpeed);
+        rb.velocity = velocity;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckDistance);
+    }
 }
