@@ -8,6 +8,7 @@ TagManager:
   - Suelo
   - Undefined
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
