@@ -195,7 +195,7 @@ MonoBehaviour:
   groundCheckDistance: 0.5
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   maxVerticalSpeed: 15
   fallMultiplier: 2.5
   movementSmoothing: 0.05
@@ -227,10 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1f6555600ff6a478d4364c4a2e2412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameLabelPrefab: {fileID: 2534876004758400671, guid: a01ce527ad0f5554ea673108cb52a2e0,
-    type: 3}
-  healthLabelPrefab: {fileID: 7754491828645865186, guid: 2423fa489debe5141bd014792f30b681,
-    type: 3}
+  nameLabelPrefab: {fileID: 2534876004758400671, guid: a01ce527ad0f5554ea673108cb52a2e0, type: 3}
+  healthLabelPrefab: {fileID: 7754491828645865186, guid: 2423fa489debe5141bd014792f30b681, type: 3}
 --- !u!114 &-8922035663689415260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,8 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 5013442557450890250}
   bulletSpeed: 40
-  bulletPrefab: {fileID: 7680066456879020692, guid: 59662a8b8aa922645843f8921c397a6a,
-    type: 3}
+  bulletPrefab: {fileID: 7680066456879020692, guid: 59662a8b8aa922645843f8921c397a6a, type: 3}
 --- !u!114 &5567611202823696732
 MonoBehaviour:
   m_ObjectHideFlags: 0
