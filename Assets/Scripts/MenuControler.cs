@@ -27,7 +27,7 @@ public class MenuControler : MonoBehaviour
     }
     public void inicio()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GameScene2");
         Cursor.visible = cambio;
         Cursor.lockState = CursorLockMode.Locked;
     }
