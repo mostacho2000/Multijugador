@@ -9,11 +9,13 @@ TagManager:
   - Undefined
   - Bullet
   - Enemy
+  - Floor
+  - Coin
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Floor
   - Water
   - UI
   - 

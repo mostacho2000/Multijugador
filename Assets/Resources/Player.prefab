@@ -237,7 +237,7 @@ MonoBehaviour:
   groundCheckDistance: 0.5
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   maxVerticalSpeed: 15
   fallMultiplier: 2.5
   movementSmoothing: 0.05
