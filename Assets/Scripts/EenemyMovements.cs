@@ -20,4 +20,33 @@ public class EenemyMovements : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
     }
+
+    // Método que se llama cuando ocurre una colisión
+   /* private void OnCollisionEnter(Collision collision)
+    {
+        // Verificar si el objeto con el que colisionó tiene el tag "Bullet"
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            // Destruir el enemigo
+            Destroy(gameObject);
+        }
+    }*/
+
+    // Si estás utilizando triggers en lugar de colisiones, usa este método
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        // Verificar si el objeto con el que colisionó tiene el tag "Bullet"
+        if (other.CompareTag("Bullet"))
+        {
+            // Destruir el enemigo
+            Destroy(gameObject);
+        }
+        if (other.CompareTag("Bullet2"))
+        {
+            // Destruir el enemigo
+            Destroy(gameObject);
+        }
+    }
+    
 }
