@@ -58,7 +58,7 @@ public class PlayerNameDisplay : MonoBehaviourPun
 
             if (healthText != null)
             {
-                healthText.text = $"Vida: {playerHealth.currentHealth}"; // Ahora playerHealth ya está asignado
+                healthText.text = $"Life: {playerHealth.currentHealth}"; // Ahora playerHealth ya está asignado
                 healthText.color = Color.green;
                 Debug.Log("Texto de vida asignado.");
                 
@@ -105,7 +105,7 @@ public class PlayerNameDisplay : MonoBehaviourPun
 
             if (healthText != null)
             {
-                healthText.text = $"Vida: {playerHealth.currentHealth}"; // Valor inicial de vida
+                healthText.text = $"Life: {playerHealth.currentHealth}"; // Valor inicial de vida
                 Debug.Log("Texto de vida asignado.");
             }
             else
@@ -139,8 +139,8 @@ public class PlayerNameDisplay : MonoBehaviourPun
         if (healthText != null)
         {
             // Actualizar el texto con la vida actual
-            healthText.text = $"Vida: {currentHealth}";
-            Debug.Log($"Vida actualizada: {currentHealth}");
+            healthText.text = $"Life: {currentHealth}";
+            Debug.Log($"Life actualizada: {currentHealth}");
 
             // Calcular el porcentaje de vida
             float healthPercentage = (float)currentHealth / 100f; // Asumimos que 100 es el valor máximo de vida

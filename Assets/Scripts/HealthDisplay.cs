@@ -61,7 +61,7 @@ public class HealthDisplay : MonoBehaviour
         if (healthText == null) return;
 
         // Actualizar el texto
-        healthText.text = $"Vida: {currentHealth}";
+        healthText.text = $"Life: {currentHealth}";
 
         // Calcular el color basado en la vida actual
         float healthPercentage = currentHealth / 100f; // Asumiendo que 100 es la vida máxima
