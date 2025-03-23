@@ -1908,6 +1908,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9086337248989039602, guid: 94bf41547a52af84785ae7e875979194, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 7019407074627451163, guid: d340f04e760274c45854bb58bd6e14ae, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
