@@ -1,6 +1,8 @@
 using UnityEngine;
 using Photon.Pun;
 
+// Clase que maneja el movimiento del jugador en una red multijugador usando Photon
+// Controla el movimiento básico, la detección del suelo y las físicas del personaje
 public class PlayerMovement : MonoBehaviourPun
 {
     [Header("Movement Settings")]
@@ -10,13 +12,18 @@ public class PlayerMovement : MonoBehaviourPun
     public float maxVerticalSpeed = 10f; // Límite de velocidad vertical
     public float fallMultiplier = 2.5f;  // Multiplicador de caída
 
+    [Header("Jump Settings")]
+    public float jumpForce = 7f;
+    public bool canJump = true;
+
     [Header("Movement Smoothing")]
     public float movementSmoothing = 0.05f;
 
     private Rigidbody rb;
     private Vector3 currentVelocity;
-    private bool isGrounded;
+    public bool isGrounded;
 
+    // Inicializa los componentes necesarios y configura el Rigidbody
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,6 +31,8 @@ public class PlayerMovement : MonoBehaviourPun
         rb.useGravity = true;
     }
 
+    // Se ejecuta a intervalos fijos para manejar las físicas del movimiento
+    // Solo se ejecuta en la instancia local del jugador
     void FixedUpdate()
     {
         if (!photonView.IsMine) return;
@@ -33,11 +42,14 @@ public class PlayerMovement : MonoBehaviourPun
         LimitVerticalSpeed();
     }
 
+    // Verifica si el jugador está tocando el suelo usando un raycast
     void CheckGrounded()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
     }
 
+    // Procesa el movimiento del jugador basado en el input horizontal y vertical
+    // Aplica suavizado al movimiento y una gravedad aumentada al caer
     void HandleMovement()
     {
         float moveX = Input.GetAxis("Horizontal");
@@ -45,6 +57,12 @@ public class PlayerMovement : MonoBehaviourPun
 
         Vector3 targetVelocity = new Vector3(moveX, 0, moveZ).normalized * speed;
         targetVelocity.y = rb.velocity.y;
+
+        // Manejo del salto
+        if (isGrounded && canJump && Input.GetButton("Jump"))
+        {
+            targetVelocity.y = jumpForce;
+        }
 
         if (!isGrounded)
         {
@@ -60,6 +78,7 @@ public class PlayerMovement : MonoBehaviourPun
         );
     }
 
+    // Limita la velocidad vertical del jugador para evitar caídas o saltos excesivamente rápidos
     void LimitVerticalSpeed()
     {
         Vector3 velocity = rb.velocity;
@@ -67,6 +86,7 @@ public class PlayerMovement : MonoBehaviourPun
         rb.velocity = velocity;
     }
 
+    // Dibuja una línea de debug que muestra el raycast de detección del suelo
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
