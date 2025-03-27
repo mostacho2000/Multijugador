@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6635245195314443262, guid: 1873ef0de953c1e46a5a91e766411970, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player_1
       objectReference: {fileID: 0}
     - target: {fileID: 6635245195314443262, guid: 1873ef0de953c1e46a5a91e766411970, type: 3}
       propertyPath: m_TagString
@@ -240,7 +240,10 @@ MonoBehaviour:
     m_Bits: 8
   maxVerticalSpeed: 15
   fallMultiplier: 2.5
+  jumpForce: 7
+  canJump: 1
   movementSmoothing: 0.05
+  isGrounded: 0
 --- !u!114 &6182451785679784009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +285,6 @@ MonoBehaviour:
   firePoint: {fileID: 5176298642161700084}
   bulletSpeed: 10
   bulletPrefab: {fileID: 7680066456879020692, guid: 59662a8b8aa922645843f8921c397a6a, type: 3}
-  bulletPrefab2: {fileID: 7680066456879020692, guid: ff314f09d5b182644bbcd70cf865b279, type: 3}
 --- !u!114 &2873814676602048620
 MonoBehaviour:
   m_ObjectHideFlags: 0

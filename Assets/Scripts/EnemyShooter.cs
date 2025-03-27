@@ -132,7 +132,7 @@ public class EnemyShooter : MonoBehaviourPun
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet_2"))
+        if (other.CompareTag("Bullet2"))
         {
             Debug.Log("Hity");
             Destroy(gameObject);
