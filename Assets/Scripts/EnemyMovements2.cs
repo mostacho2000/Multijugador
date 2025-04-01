@@ -1,38 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovements2 : MonoBehaviour
 {
     public float speed = 3f; // Velocidad del enemigo
     private Transform player;
+    private NavMeshAgent navAgent; // Reference to the NavMeshAgent component
 
     void Start()
     {
+        // Get the NavMeshAgent component
+        navAgent = GetComponent<NavMeshAgent>();
+
+        // Set the agent's speed
+        navAgent.speed = speed;
+
+        // Find the player
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     void Update()
     {
-        if (player != null)
+        if (player != null && navAgent != null && navAgent.isOnNavMesh)
         {
-            // Mover al enemigo hacia el jugador
-            transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            // Set the destination to the player's position
+            navAgent.SetDestination(player.position);
         }
     }
-
-    // Método que se llama cuando ocurre una colisión
-    /* private void OnCollisionEnter(Collision collision)
-     {
-         // Verificar si el objeto con el que colisionó tiene el tag "Bullet"
-         if (collision.gameObject.CompareTag("Bullet"))
-         {
-             // Destruir el enemigo
-             Destroy(gameObject);
-         }
-     }*/
-
-    // Si estás utilizando triggers en lugar de colisiones, usa este método
 
     private void OnTriggerEnter(Collider other)
     {
@@ -43,5 +39,4 @@ public class EnemyMovements2 : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }
