@@ -1,59 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using Unity.AI.Navigation; // Añadir este using para NavMeshSurface
 
 public class LevelCreator : MonoBehaviour
 {
     [Header("Level Settings")]
-    public int width = 50; // Ancho del nivel
-    public int length = 50; // Largo del nivel
-    public int maxHeight = 3; // Altura máxima de los obstáculos
-    public float roomSize = 1f; // Tamaño de cada celda del nivel
+    public int width = 50;
+    public int length = 50;
+    public int maxHeight = 3;
+    public float roomSize = 1f;
 
     [Header("Prefabs")]
-    public GameObject floorPrefab; // Prefab del suelo
-    public GameObject wallPrefab; // Prefab de las paredes
-    public GameObject ceilingPrefab; // Prefab del techo
-    public GameObject[] obstaclePrefabs; // Prefabs de los obstáculos
+    public GameObject floorPrefab;
+    public GameObject wallPrefab;
+    public GameObject ceilingPrefab;
+    public GameObject[] obstaclePrefabs;
 
     [Header("Generation Settings")]
     [Range(0, 100)]
-    public int obstaclePercentage = 20; // Porcentaje de generación de obstáculos
-    public bool generateCeiling = true; // Indica si se debe generar el techo
+    public int obstaclePercentage = 20;
+    public bool generateCeiling = true;
 
     [Header("Items Settings")]
     [Range(0, 100)]
-    public int itemSpawnPercentage = 10; // Porcentaje de generación de ítems
-    public GameObject[] itemPrefabs; // Prefabs de los ítems
-    public float minItemSpacing = 3f; // Espacio mínimo entre ítems
+    public int itemSpawnPercentage = 10;
+    public GameObject[] itemPrefabs;
+    public float minItemSpacing = 3f; // Espacio mínimo entre items
 
     [Header("Enemy Settings")]
     [Range(0, 100)]
-    public int enemySpawnPercentage = 15; // Porcentaje de generación de enemigos
-    public GameObject[] enemyPrefabs; // Prefabs de los enemigos
-    public float minEnemySpacing = 5f; // Espacio mínimo entre enemigos
+    public int enemySpawnPercentage = 15;
+    public GameObject[] enemyPrefabs;
+    public float minEnemySpacing = 5f;
 
-    [Header("NavMesh Settings")]
-    public NavMeshSurface navMeshSurface;
-    public float navMeshBakeDelay = 0.5f;
-
-    [Header("Terrain Settings")]
-    [Range(0, 100)]
-    public int stonePercentage = 30;
-    // Altura base del suelo (siempre habrá esta cantidad mínima de bloques)
-    public int baseGroundHeight = 1;
-    // Profundidad de la capa de tierra desde la superficie
-    public int dirtLayerDepth = 3;
-    // Altura máxima del terreno desde el nivel base
-    public int maxTerrainHeight = 8;
-    public GameObject stonePrefab;
-    public GameObject dirtPrefab;
-    public float terrainHeightScale = 1f;
-    public float noiseScale = 0.1f;
-
-    private List<Vector2> occupiedPositions = new List<Vector2>(); // Lista de posiciones ocupadas
+    private List<Vector2> occupiedPositions = new List<Vector2>();
 
     // Sistema de grid para rastrear objetos
     private Dictionary<Vector2Int, List<GameObject>> gridObjects = new Dictionary<Vector2Int, List<GameObject>>();
@@ -61,19 +41,17 @@ public class LevelCreator : MonoBehaviour
 
     public enum BlockType
     {
-        Empty, // Bloque vacío
-        Floor, // Bloque de suelo
-        Obstacle, // Bloque de obstáculo
-        Wall, // Bloque de pared
-        Item, // Bloque de ítem
-        Enemy, // Bloque de enemigo
-        Stone,
-        Dirt
+        Empty,
+        Floor,
+        Obstacle,
+        Wall,
+        Item,
+        Enemy
     }
 
     private void Start()
     {
-        GenerateLevel(); // Generar el nivel al iniciar
+        GenerateLevel();
     }
 
     void GenerateLevel()
@@ -84,33 +62,32 @@ public class LevelCreator : MonoBehaviour
         GameObject levelContainer = new GameObject("GeneratedLevel");
         levelContainer.transform.parent = transform;
 
-        // Generar terreno con ruido Perlin
-        float[,] heightMap = GenerateHeightMap();
-
-        // Generar capas del terreno
+        // Generar suelo y objetos
         for (int x = 0; x < width; x++)
         {
             for (int z = 0; z < length; z++)
             {
-                int terrainHeight = Mathf.RoundToInt(heightMap[x,z] * terrainHeightScale);
+                Vector3 position = new Vector3(x * roomSize, 0, z * roomSize);
+                GameObject floor = Instantiate(floorPrefab, position, Quaternion.identity);
+                floor.transform.parent = levelContainer.transform;
                 
-                // Generar capas
-                for (int y = 0; y <= terrainHeight; y++)
-                {
-                    GenerateBlock(x, y, z, terrainHeight, levelContainer);
-                }
+                AddToGrid(new Vector2Int(x, z), floor, BlockType.Floor);
 
-                // Generar recursos y elementos adicionales solo en la superficie
-                if (Random.Range(0, 100) < itemSpawnPercentage && IsPositionValid(x, z, minItemSpacing))
+                // Generar obstáculos
+                if (Random.Range(0, 100) < obstaclePercentage)
                 {
-                    Vector3 itemPos = new Vector3(x * roomSize, (terrainHeight + 1) * roomSize, z * roomSize);
-                    SpawnItem(itemPos, levelContainer);
+                    GenerateObstacle(x, z, levelContainer);
+                    occupiedPositions.Add(new Vector2(x, z));
                 }
-                
-                if (Random.Range(0, 100) < enemySpawnPercentage && IsPositionValid(x, z, minEnemySpacing))
+                // Intentar generar item si no hay obstáculo
+                else if (Random.Range(0, 100) < itemSpawnPercentage)
                 {
-                    Vector3 enemyPos = new Vector3(x * roomSize, (terrainHeight + 1) * roomSize, z * roomSize);
-                    SpawnEnemy(enemyPos, levelContainer);
+                    TrySpawnItem(x, z, levelContainer);
+                }
+                // Intentar generar enemigo
+                else if (Random.Range(0, 100) < enemySpawnPercentage)
+                {
+                    TrySpawnEnemy(x, z, levelContainer);
                 }
             }
         }
@@ -123,117 +100,6 @@ public class LevelCreator : MonoBehaviour
         {
             GenerateCeiling(levelContainer);
         }
-
-        // Añadir NavMeshSurface si no existe
-        if (navMeshSurface == null)
-        {
-            navMeshSurface = levelContainer.AddComponent<NavMeshSurface>();
-            navMeshSurface.collectObjects = CollectObjects.All;
-            navMeshSurface.useGeometry = NavMeshCollectGeometry.PhysicsColliders;
-        }
-
-        // Iniciar la generación del NavMesh después de un pequeño delay
-        StartCoroutine(BuildNavMeshDelayed());
-    }
-
-    IEnumerator BuildNavMeshDelayed()
-    {
-        // Esperar a que todos los objetos estén en su lugar
-        yield return new WaitForSeconds(navMeshBakeDelay);
-        
-        // Construir el NavMesh
-        navMeshSurface.BuildNavMesh();
-        
-        // Añadir NavMeshAgent a los enemigos
-        SetupEnemyNavigation();
-    }
-
-    void SetupEnemyNavigation()
-    {
-        foreach (var gridPos in gridObjects)
-        {
-            foreach (var obj in gridPos.Value)
-            {
-                if (GetBlockTypeAt(gridPos.Key) == BlockType.Enemy)
-                {
-                    // Añadir AIController como componente
-                    AIController aiController = obj.AddComponent<AIController>();
-                }
-            }
-        }
-    }
-
-    private float[,] GenerateHeightMap()
-    {
-        float[,] heightMap = new float[width, length];
-        float offsetX = Random.Range(0f, 1000f);
-        float offsetZ = Random.Range(0f, 1000f);
-
-        for (int x = 0; x < width; x++)
-        {
-            for (int z = 0; z < length; z++)
-            {
-                float xCoord = (float)x * noiseScale + offsetX;
-                float zCoord = (float)z * noiseScale + offsetZ;
-                // Ajusta el ruido para que esté entre baseGroundHeight y maxTerrainHeight
-                float noise = Mathf.PerlinNoise(xCoord, zCoord);
-                heightMap[x,z] = Mathf.Lerp(baseGroundHeight, maxTerrainHeight, noise);
-            }
-        }
-
-        return heightMap;
-    }
-
-    private void GenerateBlock(int x, int y, int z, int surfaceHeight, GameObject container)
-    {
-        Vector3 position = new Vector3(x * roomSize, y * roomSize, z * roomSize);
-        GameObject block;
-
-        // Calcula la profundidad desde la superficie
-        int depthFromSurface = surfaceHeight - y;
-
-        if (y == 0)
-        {
-            // Capa base (bedrock)
-            block = Instantiate(floorPrefab, position, Quaternion.identity);
-            AddToGrid(new Vector2Int(x, z), block, BlockType.Floor);
-        }
-        else if (depthFromSurface <= dirtLayerDepth && y < surfaceHeight)
-        {
-            // Capa de tierra (desde la superficie hacia abajo)
-            block = Instantiate(dirtPrefab, position, Quaternion.identity);
-            AddToGrid(new Vector2Int(x, z), block, BlockType.Dirt);
-        }
-        else
-        {
-            // Piedra (todo lo demás)
-            block = Instantiate(stonePrefab, position, Quaternion.identity);
-            AddToGrid(new Vector2Int(x, z), block, BlockType.Stone);
-        }
-        
-        block.transform.parent = container.transform;
-    }
-
-    private void SpawnItem(Vector3 position, GameObject container)
-    {
-        GameObject item = Instantiate(
-            itemPrefabs[Random.Range(0, itemPrefabs.Length)],
-            position,
-            Quaternion.identity
-        );
-        item.transform.parent = container.transform;
-        AddToGrid(new Vector2Int((int)(position.x/roomSize), (int)(position.z/roomSize)), item, BlockType.Item);
-    }
-
-    private void SpawnEnemy(Vector3 position, GameObject container)
-    {
-        GameObject enemy = Instantiate(
-            enemyPrefabs[Random.Range(0, enemyPrefabs.Length)],
-            position,
-            Quaternion.identity
-        );
-        enemy.transform.parent = container.transform;
-        AddToGrid(new Vector2Int((int)(position.x/roomSize), (int)(position.z/roomSize)), enemy, BlockType.Enemy);
     }
 
     private void GenerateObstacle(int x, int z, GameObject container)

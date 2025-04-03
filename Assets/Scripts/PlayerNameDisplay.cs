@@ -2,9 +2,6 @@ using UnityEngine;
 using TMPro;
 using Photon.Pun;
 
-// Esta clase maneja la visualización del nombre del jugador y su barra de vida en la interfaz
-// Se encarga de crear, actualizar y destruir las etiquetas de texto que muestran esta información
-// Utiliza Photon para distinguir entre el jugador local y los demás jugadores
 public class PlayerNameDisplay : MonoBehaviourPun
 {
     public GameObject nameLabelPrefab; // Prefab del nombre de usuario (TextMeshPro)
@@ -15,9 +12,6 @@ public class PlayerNameDisplay : MonoBehaviourPun
     private TextMeshProUGUI healthText;
     private PlayerHealth playerHealth;
 
-    // Inicializa los componentes y configura las etiquetas de nombre y vida
-    // Si es el jugador local, establece el texto en verde y muestra "Jugador Local"
-    // Para otros jugadores, muestra "Otro Jugador" y configura la actualización de vida
     void Start()
     {
         if (photonView.IsMine)
@@ -64,7 +58,7 @@ public class PlayerNameDisplay : MonoBehaviourPun
 
             if (healthText != null)
             {
-                healthText.text = $"Vida: {playerHealth.currentHealth}"; // Ahora playerHealth ya está asignado
+                healthText.text = $"Life: {playerHealth.currentHealth}"; // Ahora playerHealth ya está asignado
                 healthText.color = Color.green;
                 Debug.Log("Texto de vida asignado.");
                 
@@ -111,7 +105,7 @@ public class PlayerNameDisplay : MonoBehaviourPun
 
             if (healthText != null)
             {
-                healthText.text = $"Vida: {playerHealth.currentHealth}"; // Valor inicial de vida
+                healthText.text = $"Life: {playerHealth.currentHealth}"; // Valor inicial de vida
                 Debug.Log("Texto de vida asignado.");
             }
             else
@@ -128,8 +122,6 @@ public class PlayerNameDisplay : MonoBehaviourPun
         }
     }
 
-    // Actualiza la posición de las etiquetas de nombre y vida en cada frame
-    // Las etiquetas siguen al jugador en la pantalla, manteniéndose sobre su cabeza
     void Update()
     {
         if (nameLabel != null && healthLabel != null)
@@ -142,16 +134,13 @@ public class PlayerNameDisplay : MonoBehaviourPun
         }
     }
 
-    // Actualiza el texto y el color de la barra de vida
-    // El color cambia gradualmente de verde a rojo según disminuye la vida
-    // Si la vida baja del 30%, el color será completamente rojo
     private void UpdateHealthDisplay(int currentHealth)
     {
         if (healthText != null)
         {
             // Actualizar el texto con la vida actual
-            healthText.text = $"Vida: {currentHealth}";
-            Debug.Log($"Vida actualizada: {currentHealth}");
+            healthText.text = $"Life: {currentHealth}";
+            Debug.Log($"Life actualizada: {currentHealth}");
 
             // Calcular el porcentaje de vida
             float healthPercentage = (float)currentHealth / 100f; // Asumimos que 100 es el valor máximo de vida
@@ -169,8 +158,6 @@ public class PlayerNameDisplay : MonoBehaviourPun
         }
     }
 
-    // Limpia los recursos al destruir el objeto
-    // Elimina las etiquetas de nombre y vida, y se desuscribe del evento de vida
     void OnDestroy()
     {
         // Destruir el nombre de usuario cuando el jugador se destruye
