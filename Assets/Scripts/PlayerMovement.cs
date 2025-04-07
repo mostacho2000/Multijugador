@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviourPun
         anim.SetFloat("VelX", moveX);
         anim.SetFloat("VelZ", moveZ);
 
+
         Vector3 targetVelocity = new Vector3(moveX, 0, moveZ).normalized * speed;
         targetVelocity.y = rb.velocity.y;
 
