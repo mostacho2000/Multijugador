@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviourPun
     public LayerMask groundLayer;
     public float maxVerticalSpeed = 10f; // Límite de velocidad vertical
     public float fallMultiplier = 2.5f;  // Multiplicador de caída
+    private Animator anim;
 
     [Header("Movement Smoothing")]
     public float movementSmoothing = 0.05f;
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviourPun
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.useGravity = true;
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviourPun
         HandleMovement();
         LimitVerticalSpeed();
     }
+  
 
     void CheckGrounded()
     {
@@ -42,6 +45,10 @@ public class PlayerMovement : MonoBehaviourPun
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
+        
+
+        anim.SetFloat("VelX", moveX);
+        anim.SetFloat("VelZ", moveZ);
 
         Vector3 targetVelocity = new Vector3(moveX, 0, moveZ).normalized * speed;
         targetVelocity.y = rb.velocity.y;
