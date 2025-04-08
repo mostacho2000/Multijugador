@@ -9,6 +9,7 @@ public class EenemyMovements : MonoBehaviour
     private Transform player;
     private NavMeshAgent navAgent; // Reference to the NavMeshAgent component
 
+
     void Start()
     {
         // Get the NavMeshAgent component
