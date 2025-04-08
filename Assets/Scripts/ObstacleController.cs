@@ -6,89 +6,200 @@ using Unity.AI.Navigation;
 
 public class ObstacleController : MonoBehaviour
 {
-    [Tooltip("Array de obstáculos que serán controlados")]
-    public GameObject[] obstacles;
+    [Header("Configuración de Lluvia de Lava")]
+    public GameObject[] lavaObstacles;
+    public ParticleSystem lavaRainParticles;
+    public float lavaDamagePerSecond = 10f;
 
-    [Tooltip("Tiempo en segundos antes de activar los obstáculos")]
+    [Header("Configuración de Tormenta de Nieve")]
+    public ParticleSystem snowStormParticles;
+    public float movementSpeedReduction = 0.5f; // Reduce velocidad a la mitad (0.5 = 50%)
+    public float snowStormDuration = 60f;
+
+    [Header("Configuración General")]
     public float activationTime = 20f;
+    public float cooldownBetweenClimates = 180f;
 
     private NavMeshSurface navMeshSurface;
-    private bool obstaclesActivated = false;
+    private bool climateActive = false;
+    private float originalPlayerSpeed;
+    private float[] originalEnemySpeeds;
+    private GameObject player;
+    private GameObject[] enemies;
 
     void Start()
     {
-        // Obtener la referencia al NavMeshSurface en la escena
         navMeshSurface = FindObjectOfType<NavMeshSurface>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (navMeshSurface == null)
+        // Almacenar velocidades originales
+        if (player != null)
         {
-            Debug.LogError("No se encontró un NavMeshSurface en la escena!");
+            originalPlayerSpeed = player.GetComponent<PlayerMovement>().speed; // Ajusta según tu componente
         }
 
-        // Asegurarse de que todos los obstáculos están desactivados al inicio
-        foreach (GameObject obstacle in obstacles)
+        originalEnemySpeeds = new float[enemies.Length];
+        for (int i = 0; i < enemies.Length; i++)
         {
-            if (obstacle != null)
+            if (enemies[i] != null)
             {
-                obstacle.SetActive(false);
+                var enemyNavMesh = enemies[i].GetComponent<NavMeshAgent>();
+                if (enemyNavMesh != null)
+                {
+                    originalEnemySpeeds[i] = enemyNavMesh.speed;
+                }
             }
         }
 
-        // Iniciar la corutina para activar los obstáculos
-        StartCoroutine(ActivateObstaclesAfterDelay());
+        // Desactivar todo al inicio
+        DeactivateAllClimates();
+
+        // Iniciar ciclo de clima
+        StartCoroutine(ClimateCycle());
     }
 
-    IEnumerator ActivateObstaclesAfterDelay()
+    IEnumerator ClimateCycle()
     {
-        yield return new WaitForSeconds(activationTime);
-
-        // Activar todos los obstáculos
-        foreach (GameObject obstacle in obstacles)
+        while (true)
         {
-            if (obstacle != null)
+            yield return new WaitForSeconds(activationTime);
+
+            // Elegir clima aleatorio
+            bool isSnowStorm = Random.Range(0, 2) == 0;
+
+            if (isSnowStorm)
             {
-                obstacle.SetActive(true);
+                yield return StartCoroutine(ActivateSnowStorm());
+            }
+            else
+            {
+                yield return StartCoroutine(ActivateLavaRain());
+            }
+
+            // Cooldown entre climas
+            yield return new WaitForSeconds(cooldownBetweenClimates);
+        }
+    }
+
+    IEnumerator ActivateLavaRain()
+    {
+        DeactivateAllClimates();
+        climateActive = true;
+
+        // Activar obstáculos de lava
+        foreach (GameObject obstacle in lavaObstacles)
+        {
+            if (obstacle != null) obstacle.SetActive(true);
+        }
+
+        // Activar partículas
+        if (lavaRainParticles != null) lavaRainParticles.Play();
+
+        // Actualizar NavMesh
+        if (navMeshSurface != null) navMeshSurface.BuildNavMesh();
+
+        Debug.Log("Lluvia de lava activada");
+        yield return new WaitForSeconds(snowStormDuration); // Usamos la misma duración
+
+        DeactivateAllClimates();
+    }
+
+    IEnumerator ActivateSnowStorm()
+    {
+        DeactivateAllClimates();
+        climateActive = true;
+
+        // Activar partículas de nieve
+        if (snowStormParticles != null) snowStormParticles.Play();
+
+        // Reducir velocidad de jugador y enemigos
+        ReduceMovementSpeeds();
+
+        Debug.Log("Tormenta de nieve activada");
+        yield return new WaitForSeconds(snowStormDuration);
+
+        // Restaurar velocidades
+        RestoreMovementSpeeds();
+        DeactivateAllClimates();
+    }
+
+    void DeactivateAllClimates()
+    {
+        // Desactivar lava
+        foreach (GameObject obstacle in lavaObstacles)
+        {
+            if (obstacle != null) obstacle.SetActive(false);
+        }
+
+        // Detener partículas
+        if (lavaRainParticles != null) lavaRainParticles.Stop();
+        if (snowStormParticles != null) snowStormParticles.Stop();
+
+        // Restaurar velocidades por si acaso
+        RestoreMovementSpeeds();
+
+        // Actualizar NavMesh
+        if (navMeshSurface != null) navMeshSurface.BuildNavMesh();
+
+        climateActive = false;
+    }
+
+    void ReduceMovementSpeeds()
+    {
+        // Reducir velocidad del jugador
+        if (player != null)
+        {
+            var playerMovement = player.GetComponent<PlayerMovement>();
+            if (playerMovement != null)
+            {
+                playerMovement.speed *= movementSpeedReduction;
             }
         }
 
-        obstaclesActivated = true;
-
-        // Actualizar el NavMesh
-        if (navMeshSurface != null)
+        // Reducir velocidad de enemigos
+        for (int i = 0; i < enemies.Length; i++)
         {
-            navMeshSurface.BuildNavMesh();
-            Debug.Log("Obstáculos activados y NavMesh actualizado");
-        }
-    }
-
-    // Método público para activar manualmente los obstáculos si es necesario
-    public void ActivateObstaclesManually()
-    {
-        if (!obstaclesActivated)
-        {
-            StopAllCoroutines();
-            StartCoroutine(ActivateObstaclesAfterDelay(0f));
-        }
-    }
-
-    // Versión sobrecargada para activar con tiempo personalizado
-    IEnumerator ActivateObstaclesAfterDelay(float customDelay)
-    {
-        yield return new WaitForSeconds(customDelay);
-
-        foreach (GameObject obstacle in obstacles)
-        {
-            if (obstacle != null)
+            if (enemies[i] != null)
             {
-                obstacle.SetActive(true);
+                var enemyNavMesh = enemies[i].GetComponent<NavMeshAgent>();
+                if (enemyNavMesh != null)
+                {
+                    enemyNavMesh.speed = originalEnemySpeeds[i] * movementSpeedReduction;
+                }
+            }
+        }
+    }
+
+    void RestoreMovementSpeeds()
+    {
+        // Restaurar jugador
+        if (player != null)
+        {
+            var playerMovement = player.GetComponent<PlayerMovement>();
+            if (playerMovement != null)
+            {
+                playerMovement.speed = originalPlayerSpeed;
             }
         }
 
-        obstaclesActivated = true;
-
-        if (navMeshSurface != null)
+        // Restaurar enemigos
+        for (int i = 0; i < enemies.Length; i++)
         {
-            navMeshSurface.BuildNavMesh();
+            if (enemies[i] != null)
+            {
+                var enemyNavMesh = enemies[i].GetComponent<NavMeshAgent>();
+                if (enemyNavMesh != null)
+                {
+                    enemyNavMesh.speed = originalEnemySpeeds[i];
+                }
+            }
         }
+    }
+
+    // Método para daño por lava (llamar desde Update en objetos afectados)
+    public bool IsLavaActive()
+    {
+        return climateActive && lavaRainParticles != null && lavaRainParticles.isPlaying;
     }
 }

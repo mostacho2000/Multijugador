@@ -38,5 +38,10 @@ public class EnemyMovements2 : MonoBehaviour
             // Destruir el enemigo
             Destroy(gameObject);
         }
+        if (other.CompareTag("MuerteSEG"))
+        {
+            // Destruir el enemigo
+            Destroy(gameObject);
+        }
     }
 }

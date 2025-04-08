@@ -12,6 +12,7 @@ TagManager:
   - Floor
   - Coin
   - Bullet2
+  - MuerteSEG
   layers:
   - Default
   - TransparentFX
