@@ -280,8 +280,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8657494684292192266}
   bulletSpeed: 10
-  bulletPrefab: {fileID: 7680066456879020692, guid: 59662a8b8aa922645843f8921c397a6a, type: 3}
-  bulletPrefab2: {fileID: 7680066456879020692, guid: ff314f09d5b182644bbcd70cf865b279, type: 3}
+  bulletPrefab: {fileID: 8328202544489982447, guid: e4fdb23183d0eb64788efcc8d8ed73e9, type: 3}
+  bulletPrefab2: {fileID: 460933981601123968, guid: a8a3422a5230f074abc68839235b1c98, type: 3}
 --- !u!114 &5727802660069234146
 MonoBehaviour:
   m_ObjectHideFlags: 0
