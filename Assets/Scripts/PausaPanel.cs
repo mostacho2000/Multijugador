@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PausaPanel : MonoBehaviour
 {
@@ -48,6 +49,16 @@ public class PausaPanel : MonoBehaviour
         // Bloquear el cursor (opcional, si tu juego lo usa)
         // Cursor.lockState = CursorLockMode.Locked;
         // Cursor.visible = false;
+    }
+    public void OnRespawnButtonClicked()
+    {
+        GameObject localPlayer = GameObject.FindGameObjectWithTag("Player");
+        pausePanel.SetActive(false);
+
+        if (localPlayer != null && localPlayer.GetComponent<PhotonView>().IsMine)
+        {
+            NetworkManager.Instance.RespawnPlayer(localPlayer);
+        }
     }
 
     // Métodos para los botones del menú

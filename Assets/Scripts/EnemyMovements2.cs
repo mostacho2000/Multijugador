@@ -5,42 +5,50 @@ using UnityEngine.AI;
 
 public class EnemyMovements2 : MonoBehaviour
 {
-    public float speed = 3f; // Velocidad del enemigo
+    public float speed = 3f;
+    public float playerSearchInterval = 0.5f; // Cada cuánto buscar al jugador
+
     private Transform player;
-    private NavMeshAgent navAgent; // Reference to the NavMeshAgent component
+    private NavMeshAgent navAgent;
+    private float lastPlayerSearchTime;
 
     void Start()
     {
-        // Get the NavMeshAgent component
         navAgent = GetComponent<NavMeshAgent>();
-
-        // Set the agent's speed
         navAgent.speed = speed;
-
-        // Find the player
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        FindPlayer();
     }
 
     void Update()
     {
+        // Buscar al jugador periódicamente si no lo tenemos o fue destruido
+        if (Time.time - lastPlayerSearchTime > playerSearchInterval &&
+           (player == null || player.gameObject == null))
+        {
+            FindPlayer();
+            lastPlayerSearchTime = Time.time;
+        }
+
+        // Mover solo si tenemos un jugador válido y el NavMeshAgent está listo
         if (player != null && navAgent != null && navAgent.isOnNavMesh)
         {
-            // Set the destination to the player's position
             navAgent.SetDestination(player.position);
+        }
+    }
+
+    private void FindPlayer()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Verificar si el objeto con el que colisionó tiene el tag "Bullet"
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") || other.CompareTag("MuerteSEG"))
         {
-            // Destruir el enemigo
-            Destroy(gameObject);
-        }
-        if (other.CompareTag("MuerteSEG"))
-        {
-            // Destruir el enemigo
             Destroy(gameObject);
         }
     }

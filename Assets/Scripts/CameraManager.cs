@@ -3,18 +3,31 @@ using Photon.Pun;
 
 public class CameraManager : MonoBehaviour
 {
-    public GameObject player;
-    [SerializeField] public float smoothSpeed = 5f;
-    [SerializeField] public Vector3 offset = new Vector3(0, 10, -3);
-    public bool isFollowing = true;
+    public static CameraManager Instance;
+
+    [SerializeField] private float smoothSpeed = 5f;
+    [SerializeField] private Vector3 offset = new Vector3(0, 10, -3);
+    private GameObject player;
+    private bool isFollowing = true;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
-        // Esperar un momento para que el jugador se instancie
-        Invoke("FindPlayer", 4f);
+        FindPlayer();
     }
 
-    void FindPlayer()
+    public void FindPlayer()
     {
         // Buscar al jugador local
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -23,9 +36,21 @@ public class CameraManager : MonoBehaviour
             PhotonView pv = p.GetComponent<PhotonView>();
             if (pv != null && pv.IsMine)
             {
-                player = p;
+                SetNewPlayerTarget(p);
                 break;
             }
+        }
+    }
+
+    public void SetNewPlayerTarget(GameObject newPlayer)
+    {
+        player = newPlayer;
+        isFollowing = true;
+
+        // Posicionamiento inmediato al cambiar de jugador
+        if (player != null)
+        {
+            transform.position = player.transform.position + offset;
         }
     }
 
@@ -33,9 +58,7 @@ public class CameraManager : MonoBehaviour
     {
         if (player != null && isFollowing)
         {
-            // Calcular la posición objetivo
             Vector3 desiredPosition = player.transform.position + offset;
-            // Suavizar el movimiento
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
             transform.position = smoothedPosition;
         }
