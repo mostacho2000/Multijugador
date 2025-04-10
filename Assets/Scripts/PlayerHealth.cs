@@ -49,6 +49,12 @@ public class PlayerHealth : MonoBehaviourPun
             TakeDamage(10);
             Debug.Log("Impacto de bala recibido.");
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Asumimos que el daño de la bala es 10, puedes ajustar esto según sea necesario
+            TakeDamage(110);
+            Debug.Log("Muerte inmediata");
+        }
     }
 
     private void Die()
