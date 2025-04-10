@@ -88,6 +88,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 552fe2a3f8c65174b8f2083d647dba3f, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 552fe2a3f8c65174b8f2083d647dba3f, type: 3}
+    - target: {fileID: 5866666021909216657, guid: 552fe2a3f8c65174b8f2083d647dba3f, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e146b5795d8f83e449e73770dea874c8, type: 2}
@@ -280,8 +284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8657494684292192266}
   bulletSpeed: 10
-  bulletPrefab: {fileID: 7680066456879020692, guid: 59662a8b8aa922645843f8921c397a6a, type: 3}
-  bulletPrefab2: {fileID: 7680066456879020692, guid: ff314f09d5b182644bbcd70cf865b279, type: 3}
+  bulletPrefab: {fileID: 8328202544489982447, guid: e4fdb23183d0eb64788efcc8d8ed73e9, type: 3}
+  bulletPrefab2: {fileID: 2740600388208638117, guid: e0eaa558ca6b1da43b28ef74c8a5b692, type: 3}
 --- !u!114 &5727802660069234146
 MonoBehaviour:
   m_ObjectHideFlags: 0
