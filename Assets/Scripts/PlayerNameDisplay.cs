@@ -5,7 +5,7 @@ using Photon.Pun;
 public class PlayerNameDisplay : MonoBehaviourPun
 {
     public GameObject nameLabelPrefab; // Prefab del nombre de usuario (TextMeshPro)
-    public GameObject healthLabelPrefab; // Prefab de la vida del jugador (TextMeshPro)
+    //public GameObject healthLabelPrefab; // Prefab de la vida del jugador (TextMeshPro)
     private GameObject nameLabel; // Instancia del nombre de usuario
     private GameObject healthLabel; // Instancia de la vida del jugador
     private TextMeshProUGUI nameText;
@@ -26,14 +26,14 @@ public class PlayerNameDisplay : MonoBehaviourPun
 
             // Solo el dueño del PhotonView instancia el nombre de usuario
             nameLabel = Instantiate(nameLabelPrefab, Vector3.zero, Quaternion.identity);
-            healthLabel = Instantiate(healthLabelPrefab, Vector3.zero, Quaternion.identity);
+           // healthLabel = Instantiate(healthLabelPrefab, Vector3.zero, Quaternion.identity);
 
             // Asignar el nombre de usuario al Canvas
             Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
             if (canvas != null)
             {
                 nameLabel.transform.SetParent(canvas.transform, false);
-                healthLabel.transform.SetParent(canvas.transform, false);
+                //healthLabel.transform.SetParent(canvas.transform, false);
                 Debug.Log("Canvas encontrado y nombre asignado al Canvas.");
             }
             else
@@ -44,7 +44,7 @@ public class PlayerNameDisplay : MonoBehaviourPun
 
             // Asignar un nombre fijo al texto
             nameText = nameLabel.GetComponent<TextMeshProUGUI>();
-            healthText = healthLabel.GetComponent<TextMeshProUGUI>();
+           // healthText = healthLabel.GetComponent<TextMeshProUGUI>();
             if (nameText != null)
             {
                 nameText.text = "Jugador Local"; // Nombre fijo para pruebas
@@ -56,7 +56,7 @@ public class PlayerNameDisplay : MonoBehaviourPun
                 Debug.LogError("El prefab no tiene un componente TextMeshProUGUI.");
             }
 
-            if (healthText != null)
+           /* if (healthText != null)
             {
                 healthText.text = $"Life: {playerHealth.currentHealth}"; // Ahora playerHealth ya está asignado
                 healthText.color = Color.green;
@@ -68,20 +68,20 @@ public class PlayerNameDisplay : MonoBehaviourPun
             else
             {
                 Debug.LogError("El prefab de vida no tiene un componente TextMeshProUGUI.");
-            }
+            }*/
         }
         else
         {
             // Para otros jugadores, instanciar el nombre de usuario
             nameLabel = Instantiate(nameLabelPrefab, Vector3.zero, Quaternion.identity);
-            healthLabel = Instantiate(healthLabelPrefab, Vector3.zero, Quaternion.identity);
+           // healthLabel = Instantiate(healthLabelPrefab, Vector3.zero, Quaternion.identity);
 
             // Asignar el nombre de usuario al Canvas
             Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
             if (canvas != null)
             {
                 nameLabel.transform.SetParent(canvas.transform, false);
-                healthLabel.transform.SetParent(canvas.transform, false);
+               // healthLabel.transform.SetParent(canvas.transform, false);
                 Debug.Log("Canvas encontrado y nombre asignado al Canvas.");
             }
             else
@@ -92,7 +92,7 @@ public class PlayerNameDisplay : MonoBehaviourPun
 
             // Asignar un nombre fijo al texto
             nameText = nameLabel.GetComponent<TextMeshProUGUI>();
-            healthText = healthLabel.GetComponent<TextMeshProUGUI>();
+            //healthText = healthLabel.GetComponent<TextMeshProUGUI>();
             if (nameText != null)
             {
                 nameText.text = "Otro Jugador"; // Nombre fijo para pruebas
@@ -124,12 +124,12 @@ public class PlayerNameDisplay : MonoBehaviourPun
 
     void Update()
     {
-        if (nameLabel != null && healthLabel != null)
+        if (nameLabel != null /*&& healthLabel != null*/)
         {
             // Actualizar la posición del nombre de usuario en la pantalla
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 2f); // Ajusta la altura del texto
             nameLabel.transform.position = screenPosition;
-            healthLabel.transform.position = screenPosition + new Vector3(0, -20, 0); // Ajusta la posición de la vida
+           // healthLabel.transform.position = screenPosition + new Vector3(0, -20, 0); // Ajusta la posición de la vida
             //Debug.Log("Posición del nombre y vida actualizada: " + screenPosition);
         }
     }
@@ -167,11 +167,11 @@ public class PlayerNameDisplay : MonoBehaviourPun
             Debug.Log("Nombre de usuario destruido.");
         }
 
-        if (healthLabel != null)
+       /* if (healthLabel != null)
         {
             Destroy(healthLabel);
             Debug.Log("Texto de vida destruido.");
-        }
+        }*/
 
         // Desuscribirse del evento cuando se destruye el objeto
         if (playerHealth != null)

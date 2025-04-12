@@ -269,7 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameLabelPrefab: {fileID: 2534876004758400671, guid: a01ce527ad0f5554ea673108cb52a2e0, type: 3}
-  healthLabelPrefab: {fileID: 7754491828645865186, guid: 2423fa489debe5141bd014792f30b681, type: 3}
 --- !u!114 &3148504971655642789
 MonoBehaviour:
   m_ObjectHideFlags: 0
