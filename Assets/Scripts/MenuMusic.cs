@@ -38,9 +38,9 @@ public class MenuMusic : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex >= 0 && scene.buildIndex <= 3)
+        if (scene.buildIndex >= 0 && scene.buildIndex <= 7)
         {
-            // Si la escena está entre la 1 y la 4, reproducir la música para esas escenas
+            // Si la escena está entre la 1 y la 8, reproducir la música para esas escenas
             if (audioSource.clip != musicForScenes0to3 || !audioSource.isPlaying)
             {
                 audioSource.clip = musicForScenes0to3;
@@ -49,9 +49,9 @@ public class MenuMusic : MonoBehaviour
                 audioSource.Play();
             }
         }
-        else if (scene.buildIndex >= 4)
+        else if (scene.buildIndex >= 8)
         {
-            // Si la escena es la 5, reproducir la música diferente para esa escena
+            // Si la escena es la 9, reproducir la música diferente para esa escena
             if (audioSource.clip != musicForScene4 || !audioSource.isPlaying)
             {
                 audioSource.clip = musicForScene4;

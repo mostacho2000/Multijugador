@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Controls.unity
     guid: 8cae72044e62c0c438fdea7250693b05
+  - enabled: 1
+    path: Assets/Scenes/Bullets.unity
+    guid: 6ad29690a54b8c147a32696b0f15d4ea
+  - enabled: 1
+    path: Assets/Scenes/Enemies.unity
+    guid: 07d89fb6275626f43a9d01c3cadbf2ca
   m_configObjects: {}
