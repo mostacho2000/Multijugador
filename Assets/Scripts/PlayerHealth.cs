@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviourPun
     {
         currentHealth = maxHealth;
         onHealthChanged?.Invoke((int)currentHealth); // Notificar el estado inicial de la salud
+        
     }
 
     public bool Heal(int amount)
@@ -55,9 +56,15 @@ public class PlayerHealth : MonoBehaviourPun
             TakeDamage(110);
             Debug.Log("Muerte inmediata");
         }
+        if (collision.gameObject.CompareTag("MuerteSEG"))
+        {
+            // Asumimos que el daño de la bala es 10, puedes ajustar esto según sea necesario
+            TakeDamage(110);
+            Debug.Log("Muerte inmediata");
+        }
     }
 
-    private void Die()
+    public void Die()
     {
         Debug.Log("Player died!");
         // Lógica de fin de juego

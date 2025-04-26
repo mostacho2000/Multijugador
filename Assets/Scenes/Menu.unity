@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de03ee9171e2a644b5e6a47968f8d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Baltazar: {fileID: 0}
 --- !u!4 &147695429
 Transform:
   m_ObjectHideFlags: 0
@@ -1264,7 +1265,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 147695428}
         m_TargetAssemblyTypeName: MenuControler, Assembly-CSharp
-        m_MethodName: inicio
+        m_MethodName: OnPlayButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
