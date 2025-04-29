@@ -47,7 +47,7 @@ public class EnemyMovements2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet") || other.CompareTag("MuerteSEG"))
+        if (other.CompareTag("Bullet") || other.CompareTag("MuerteLava"))
         {
             Destroy(gameObject);
         }

@@ -42,25 +42,23 @@ public class PlayerHealth : MonoBehaviourPun
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other) // Cambia Collision por Collider
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet"))
         {
-            // Asumimos que el daño de la bala es 10, puedes ajustar esto según sea necesario
             TakeDamage(10);
-            Debug.Log("Impacto de bala recibido.");
+            Debug.Log("Impacto de bala recibido (Trigger).");
+            Destroy(other.gameObject); // Opcional: Destruye la bala al impactar
         }
-        if (collision.gameObject.CompareTag("Enemy"))
+        else if (other.gameObject.CompareTag("Enemy"))
         {
-            // Asumimos que el daño de la bala es 10, puedes ajustar esto según sea necesario
             TakeDamage(110);
-            Debug.Log("Muerte inmediata");
+            Debug.Log("Muerte inmediata (Trigger).");
         }
-        if (collision.gameObject.CompareTag("MuerteSEG"))
+        else if (other.gameObject.CompareTag("MuerteLava"))
         {
-            // Asumimos que el daño de la bala es 10, puedes ajustar esto según sea necesario
             TakeDamage(110);
-            Debug.Log("Muerte inmediata");
+            Debug.Log("Muerte inmediata (Trigger).");
         }
     }
 

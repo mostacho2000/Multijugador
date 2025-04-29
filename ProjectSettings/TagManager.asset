@@ -13,6 +13,7 @@ TagManager:
   - Coin
   - Bullet2
   - MuerteSEG
+  - MuerteLava
   layers:
   - Default
   - TransparentFX

@@ -5420,6 +5420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: abbey_ruins (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5594,6 +5598,10 @@ PrefabInstance:
     - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
       propertyPath: m_Name
       value: abbey_ruins (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11762,6 +11770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: abbey_ruins (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12087,6 +12099,10 @@ PrefabInstance:
     - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
       propertyPath: m_Name
       value: abbey_ruins (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12547,6 +12563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: abbey_ruins (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12696,7 +12716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1391195039848569166, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_TagString
-      value: MuerteSEG
+      value: MuerteLava
       objectReference: {fileID: 0}
     - target: {fileID: 1871385128127641318, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_IsTrigger
@@ -12712,7 +12732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3429249825900811896, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_TagString
-      value: MuerteSEG
+      value: MuerteLava
       objectReference: {fileID: 0}
     - target: {fileID: 3817705832865872337, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_IsTrigger
@@ -12724,7 +12744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4010360052003669127, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_TagString
-      value: MuerteSEG
+      value: MuerteLava
       objectReference: {fileID: 0}
     - target: {fileID: 4480863846088030806, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_IsTrigger
@@ -12740,7 +12760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5585224096592508375, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_TagString
-      value: MuerteSEG
+      value: MuerteLava
       objectReference: {fileID: 0}
     - target: {fileID: 5831274327704267157, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_LocalScale.y
@@ -12752,15 +12772,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5986175465691626449, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_TagString
-      value: MuerteSEG
+      value: MuerteLava
       objectReference: {fileID: 0}
     - target: {fileID: 6515591387704991443, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_TagString
-      value: MuerteSEG
+      value: MuerteLava
       objectReference: {fileID: 0}
     - target: {fileID: 7181772093304122903, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_TagString
-      value: MuerteSEG
+      value: MuerteLava
       objectReference: {fileID: 0}
     - target: {fileID: 7719772674628385952, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_IsTrigger
@@ -12780,7 +12800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8344930724403820286, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_TagString
-      value: MuerteSEG
+      value: MuerteLava
       objectReference: {fileID: 0}
     - target: {fileID: 8366893321165703047, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12836,11 +12856,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8849399047971309274, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_TagString
-      value: MuerteSEG
+      value: MuerteLava
       objectReference: {fileID: 0}
     - target: {fileID: 8880629022287016819, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_TagString
-      value: MuerteSEG
+      value: MuerteLava
       objectReference: {fileID: 0}
     - target: {fileID: 9055310108630050920, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
       propertyPath: m_Name
@@ -12906,6 +12926,10 @@ PrefabInstance:
     - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
       propertyPath: m_Name
       value: abbey_ruins
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
