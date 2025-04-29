@@ -5368,6 +5368,63 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3429249825900811896, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
   m_PrefabInstance: {fileID: 512302501641572126}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &380683548
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -64.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.0722704
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_Name
+      value: abbey_ruins (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5486,6 +5543,63 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1001 &410736063
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 63.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -71.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_Name
+      value: abbey_ruins (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
 --- !u!1 &412915854
 GameObject:
   m_ObjectHideFlags: 0
@@ -11596,6 +11710,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100266274}
   m_CullTransparentMesh: 1
+--- !u!1001 &1411689688
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 64.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 39.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_Name
+      value: abbey_ruins (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
 --- !u!1 &1472081623
 GameObject:
   m_ObjectHideFlags: 0
@@ -11865,6 +12036,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725886827}
   m_CullTransparentMesh: 1
+--- !u!1001 &1828969798
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 60.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_Name
+      value: abbey_ruins (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
 --- !u!1 &1863422569
 GameObject:
   m_ObjectHideFlags: 0
@@ -12267,6 +12495,63 @@ MonoBehaviour:
   snowStormDuration: 60
   activationTime: 5
   cooldownBetweenClimates: 180
+--- !u!1001 &2034307975
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -67.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_Name
+      value: abbey_ruins (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
 --- !u!1 &2039956714
 GameObject:
   m_ObjectHideFlags: 0
@@ -12570,6 +12855,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b3b506d502e950478cf1d40e29a6358, type: 3}
+--- !u!1001 &832029497003595576
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546349074069084787, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890645006643101897, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
+      propertyPath: m_Name
+      value: abbey_ruins
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7765aedde79fd67439f6fb699e40a349, type: 3}
 --- !u!1001 &2330661506353360095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12721,3 +13063,9 @@ SceneRoots:
   - {fileID: 319074422}
   - {fileID: 2330661506353360095}
   - {fileID: 512302501641572126}
+  - {fileID: 832029497003595576}
+  - {fileID: 1411689688}
+  - {fileID: 380683548}
+  - {fileID: 1828969798}
+  - {fileID: 2034307975}
+  - {fileID: 410736063}
