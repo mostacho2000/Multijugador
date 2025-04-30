@@ -7,37 +7,47 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MaterialPared
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: 90eabda4f2f45684ca06e6056f2ffe1b, type: 2}
+  m_Name: Lava
+  m_Shader: {fileID: -6465566751694194690, guid: 3a0059446c6558f4c869fffae6df1061, type: 3}
+  m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _ALPHAPREMULTIPLY_ON
-  - _GLOSSYREFLECTIONS_OFF
+  m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Transparent
+  stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _GlossMapScale: 0
-    - _Glossiness: 0
-    - _GlossyReflections: 0
-    - _Metallic: 0.034
-    - _Parallax: 0.005
+    - _DistortionScale: 10
+    - _NoisePower: 5
+    - _NoiseScale: 100
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _TwirlStrenght: 10
     m_Colors:
-    - _Color: {r: 0.9529411, g: 0, b: 0.082128756, a: 1}
-    - _EmissionColor: {r: 3.0601327, g: 0, b: 0.0692894, a: 1}
+    - _BaseColor: {r: 64, g: 0, b: 0, a: 0}
+    - _PanSpeed: {r: 0.1, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &2546980719442956903
+--- !u!114 &3852664226008257441
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
