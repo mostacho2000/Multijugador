@@ -12,18 +12,26 @@ Material:
   m_Parent: {fileID: 2100000, guid: 90eabda4f2f45684ca06e6056f2ffe1b, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+<<<<<<< HEAD
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords:
+=======
+>>>>>>> parent of 6834889 (ccccc)
   - _GLOSSYREFLECTIONS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
+<<<<<<< HEAD
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
   - DepthOnly
   - SHADOWCASTER
+=======
+  stringTagMap: {}
+  disabledShaderPasses: []
+>>>>>>> parent of 6834889 (ccccc)
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
