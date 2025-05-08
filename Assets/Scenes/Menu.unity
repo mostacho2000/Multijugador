@@ -1067,7 +1067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d619449fe613c944eb6df4f76c65dd26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicForScenes0to3: {fileID: 8300000, guid: a5a6d415993e05a49ae210924f6433b3, type: 3}
+  musicForScenes0to3: {fileID: 8300000, guid: 9ef82ec0b6501124791b6b1884a0d94e, type: 3}
   musicForScene4: {fileID: 0}
   halfVolume: 0.5
 --- !u!4 &1620560805
